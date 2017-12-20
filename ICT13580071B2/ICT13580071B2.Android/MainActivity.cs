@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace ICT13580071B2.Droid
 {
-    [Activity(Label = "ICT13580071B2", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ICT13580024B2", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -20,7 +20,11 @@ namespace ICT13580071B2.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+
+            var dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            dbPath = System.IO.Path.Combine(dbPath, "myshop.db3");
+
+            LoadApplication(new App(dbPath));
         }
     }
 }
